@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+    postgresql:
+        image: postgres:12-alpine
+        container_name: postgresql
+        ports:
+            - '5432:5432'
+        environment:
+            - POSTGRES_USER=root
+            - POSTGRES_PASSWORD=secret
+            - POSTGRES_DB=ecommerce_admin
+        networks:
+            - web-api
+
+networks:
+    web-api:
+        name: web-api
+        driver: bridge
